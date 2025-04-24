@@ -20,6 +20,7 @@ export default function Sidebar({ ...rest }) {
         firebaseCredential,
       )
       setUser(userCredential.user)
+      localStorage.setItem("user", JSON.stringify(userCredential.user))
       console.log("userCredential: ", userCredential)
     } catch (error) {
       console.error("Error signing in with Google: ", error)
@@ -30,6 +31,7 @@ export default function Sidebar({ ...rest }) {
     try {
       await auth.signOut()
       setUser(null)
+      localStorage.removeItem("user")
       console.log("User logged out")
     } catch (error) {
       console.error("Error signing out: ", error)
