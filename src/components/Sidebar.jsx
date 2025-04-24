@@ -2,9 +2,11 @@ import { NavLink, Link } from "react-router"
 import { GoogleLogin } from "@react-oauth/google"
 import { auth, signInWithCredential, GoogleAuthProvider } from "../../firebase"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { UserContext } from "../layouts/MainLayout"
+
 export default function Sidebar({ ...rest }) {
-  const [user, setUser] = useState(null)
+  const { user, setUser } = useContext(UserContext)
 
   const normalClass =
     "rounded-lg text-white py-4 block px-8 text-xl font-medium duration-300 hover:bg-green-700"
