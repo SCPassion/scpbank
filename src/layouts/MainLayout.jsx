@@ -1,19 +1,15 @@
 import { Outlet } from "react-router"
 import Header from "../components/Header"
 import Sidebar from "../components/Sidebar"
-import { useState, useEffect, createContext, useRef } from "react"
+import { createContext, useRef } from "react"
+import useLoginState from "../hooks/useLoginState"
 
 const UserContext = createContext()
 
 export default function MainLayout() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useLoginState()
+
   const ref = useRef(null)
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user")
-    if (storedUser) {
-      setUser(JSON.parse(storedUser))
-    }
-  }, [])
 
   return (
     <UserContext.Provider value={{ user, setUser, ref }}>

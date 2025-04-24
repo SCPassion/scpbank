@@ -1,15 +1,12 @@
 import { NavLink, Link } from "react-router"
 import { GoogleLogin } from "@react-oauth/google"
 import { auth, signInWithCredential, GoogleAuthProvider } from "../../firebase"
-
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "../layouts/MainLayout"
+import Navigations from "./Navigations"
 
 export default function Sidebar({ ...rest }) {
   const { user, setUser, ref } = useContext(UserContext)
-
-  const normalClass =
-    "rounded-lg text-white py-4 block px-8 text-xl font-medium duration-300 hover:bg-green-700"
 
   async function handleLogin(credentialResponse) {
     try {
@@ -45,70 +42,8 @@ export default function Sidebar({ ...rest }) {
           <span className="font-black">SCP</span>Bank
         </p>
       </Link>
-      <nav>
-        <ul className="space-y-10">
-          <li>
-            <NavLink
-              to="savings"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Savings
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="interest"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Interest Calculator
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="budget"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Budget Planner
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="retire"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Retirement Planner
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="stock"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Stock Market
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="investment"
-              className={({ isActive }) =>
-                isActive ? `bg-selectedTab ${normalClass}` : normalClass
-              }
-            >
-              Investment Risk
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+
+      <Navigations />
 
       <div className="mt-20">
         {!user ? (

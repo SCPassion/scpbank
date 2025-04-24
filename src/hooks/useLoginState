@@ -1,0 +1,18 @@
+import { useState, useEffect } from "react"
+
+/**
+ * Custom hook to manage user login state.
+ * It retrieves the user data from localStorage when the component mounts.
+ * @returns {Array} An array containing the user object and a function to update it.
+ */
+export default function useLoginState() {
+  const [user, setUser] = useState(null)
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user")
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
+  }, [])
+
+  return [user, setUser]
+}
