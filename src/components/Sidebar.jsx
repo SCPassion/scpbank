@@ -112,13 +112,17 @@ export default function Sidebar({ ...rest }) {
 
       <div className="mt-20">
         {!user ? (
-          <GoogleLogin
-            onSuccess={handleLogin}
-            onError={() => console.log("not successful")}
-          />
+          <div className="flex scale-130 justify-center">
+            <GoogleLogin
+              onSuccess={handleLogin}
+              onError={() => console.log("not successful")}
+            />
+          </div>
         ) : (
           <div className="flex flex-col gap-4 text-center text-xl font-bold">
-            <p className="">{`Hi, ${user.displayName}`}</p>
+            <p className="font-medium">
+              User: <span className="font-bold">{user.displayName}</span>
+            </p>
             <button
               onClick={handleLogOut}
               className="cursor-pointer rounded-full bg-green-700 py-4"
