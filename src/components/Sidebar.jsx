@@ -6,7 +6,7 @@ import { useState, useEffect, useContext } from "react"
 import { UserContext } from "../layouts/MainLayout"
 
 export default function Sidebar({ ...rest }) {
-  const { user, setUser } = useContext(UserContext)
+  const { user, setUser, ref } = useContext(UserContext)
 
   const normalClass =
     "rounded-lg text-white py-4 block px-8 text-xl font-medium duration-300 hover:bg-green-700"
@@ -112,7 +112,7 @@ export default function Sidebar({ ...rest }) {
 
       <div className="mt-20">
         {!user ? (
-          <div className="flex scale-130 justify-center">
+          <div className="flex scale-110 justify-center" ref={ref}>
             <GoogleLogin
               onSuccess={handleLogin}
               onError={() => console.log("not successful")}
