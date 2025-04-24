@@ -1,7 +1,7 @@
-import { NavLink, Link } from "react-router"
+import { Link } from "react-router"
 import { GoogleLogin } from "@react-oauth/google"
 import { auth, signInWithCredential, GoogleAuthProvider } from "../../firebase"
-import { useState, useEffect, useContext } from "react"
+import { useContext } from "react"
 import { UserContext } from "../layouts/MainLayout"
 import Navigations from "./Navigations"
 
