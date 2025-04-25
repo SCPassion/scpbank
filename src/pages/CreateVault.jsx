@@ -1,6 +1,6 @@
 import { UserContext } from "../layouts/MainLayout"
 import { useContext, useId } from "react"
-import { createVault } from "../../firebase"
+import { createVault, deleteVault } from "../../firebase"
 
 export default function CreateVault() {
   const { user } = useContext(UserContext)
@@ -86,6 +86,16 @@ export default function CreateVault() {
 
         <button className="cursor-pointer rounded-full bg-lime-800 px-7 py-4 font-bold text-white opacity-50 shadow-lg transition-all duration-300 hover:opacity-100">
           Create your vault now!
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            deleteVault(user.uid, "fucking")
+          }}
+          className="cursor-pointer rounded-full bg-lime-800 px-7 py-4 font-bold text-white opacity-50 shadow-lg transition-all duration-300 hover:opacity-100"
+        >
+          Delete vault now!
         </button>
       </form>
     </div>

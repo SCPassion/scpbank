@@ -11,8 +11,11 @@ import {
   doc,
   setDoc,
   getDoc,
+  getDocs,
   addDoc,
   updateDoc,
+  deleteDoc,
+  deleteField,
 } from "firebase/firestore"
 
 // Your web app's Firebase configuration
@@ -67,6 +70,18 @@ export async function createVault(
   } catch (error) {
     console.error("Error creating vault: ", error)
     return error
+  }
+}
+
+export async function deleteVault(userId, goalName) {
+  try {
+    const subcollectionRef = doc(db, "users", userId)
+    await updateDoc(subcollectionRef, {
+      [goalName]: deleteField(),
+    })
+    console.log("Vault deleted successfully")
+  } catch (error) {
+    console.error("Error deleting vault: ", error)
   }
 }
 
