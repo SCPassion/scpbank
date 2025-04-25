@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router"
 import MainLayout from "./layouts/MainLayout"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import DashboardLayout from "./layouts/DashboardLayout"
+import CreateVault from "./pages/CreateVault"
+
 function App() {
   return (
     <GoogleOAuthProvider clientId="797567952659-8la5ljp472iraug6ima4rp5205ml87f1.apps.googleusercontent.com">
@@ -10,7 +12,7 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<DashboardLayout />}>
               <Route index element={<h1>Dashboard</h1>} />
-              <Route path="create" element={<h1>Create vault</h1>} />
+              <Route path="create" element={<CreateVault />} />
             </Route>
             <Route path="savings" element={<h1>Savings</h1>} />
             <Route
