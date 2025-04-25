@@ -3,6 +3,7 @@ import { GoogleLogin } from "@react-oauth/google"
 import { auth, signInWithCredential, GoogleAuthProvider } from "../../firebase"
 import { useContext } from "react"
 import { UserContext } from "../layouts/MainLayout"
+import { createUser } from "../../firebase"
 import Navigations from "./Navigations"
 
 export default function Sidebar({ ...rest }) {
@@ -16,6 +17,7 @@ export default function Sidebar({ ...rest }) {
         auth,
         firebaseCredential,
       )
+      createUser(userCredential.user.uid)
       setUser(userCredential.user)
       localStorage.setItem("user", JSON.stringify(userCredential.user))
       console.log("userCredential: ", userCredential)
