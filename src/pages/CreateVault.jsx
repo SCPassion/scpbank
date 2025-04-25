@@ -40,7 +40,7 @@ export default function CreateVault() {
             htmlFor={`${id}-goalName`}
             className="text-xl font-bold text-lime-700"
           >
-            What do you want to save for?:
+            What do you want to save for?
           </label>
           <input
             className="grow-1 bg-lime-200 px-4 py-1 text-xl placeholder:text-gray-700"
@@ -56,7 +56,7 @@ export default function CreateVault() {
             htmlFor={`${id}-targetAmount`}
             className="text-xl font-bold text-lime-700"
           >
-            How much do you want to save in total?:
+            How much do you want to save in total?
           </label>
           <input
             className="grow-1 bg-lime-200 px-4 py-1 text-xl placeholder:text-gray-700"
@@ -72,7 +72,7 @@ export default function CreateVault() {
             htmlFor={`${id}-durationInWeeks`}
             className="text-xl font-bold text-lime-700"
           >
-            How many weeks do you want to save to reach your goal?:
+            How many weeks do you want to save to reach your goal?
           </label>
           <input
             className="grow-1 bg-lime-200 px-4 py-1 text-xl placeholder:text-gray-700"
