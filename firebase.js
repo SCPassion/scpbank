@@ -58,12 +58,10 @@ export async function createVault(
   { goalName, targetAmount, durationInWeeks },
 ) {
   try {
-    const userRef = doc(db, "users", userId)
-    await updateDoc(userRef, {
-      [goalName]: {
-        targetAmount,
-        durationInWeeks,
-      },
+    const vaultRef = doc(db, "users", userId, "vaults", goalName)
+    await setDoc(vaultRef, {
+      targetAmount,
+      durationInWeeks,
     })
 
     return "Vault created successfully"
@@ -73,12 +71,12 @@ export async function createVault(
   }
 }
 
+// Delete a vault for a user in Firestore
 export async function deleteVault(userId, goalName) {
   try {
-    const subcollectionRef = doc(db, "users", userId)
-    await updateDoc(subcollectionRef, {
-      [goalName]: deleteField(),
-    })
+    const vaultRef = doc(db, "users", userId, "vaults", goalName)
+    await deleteDoc(vaultRef)
+
     console.log("Vault deleted successfully")
   } catch (error) {
     console.error("Error deleting vault: ", error)

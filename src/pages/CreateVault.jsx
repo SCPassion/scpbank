@@ -91,7 +91,7 @@ export default function CreateVault() {
         <button
           type="button"
           onClick={() => {
-            deleteVault(user.uid, "fucking")
+            deleteVault(user.uid, "hiking")
           }}
           className="cursor-pointer rounded-full bg-lime-800 px-7 py-4 font-bold text-white opacity-50 shadow-lg transition-all duration-300 hover:opacity-100"
         >
