@@ -1,13 +1,20 @@
 import { UserContext } from "../layouts/MainLayout"
 import { useContext, useId } from "react"
+import { createVault } from "../../firebase"
+
 export default function CreateVault() {
   const { user } = useContext(UserContext)
   const id = useId()
 
-  function formAction(loginData) {
+  async function formAction(loginData) {
     const { goalName, targetAmount, durationInWeeks } =
       Object.fromEntries(loginData)
-    console.log({ goalName, targetAmount, durationInWeeks })
+    const res = await createVault(user.uid, {
+      goalName,
+      targetAmount: Number(targetAmount),
+      durationInWeeks: Number(durationInWeeks),
+    })
+    console.log("res: ", res)
   }
 
   return (

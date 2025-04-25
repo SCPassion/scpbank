@@ -11,6 +11,8 @@ import {
   doc,
   setDoc,
   getDoc,
+  addDoc,
+  updateDoc,
 } from "firebase/firestore"
 
 // Your web app's Firebase configuration
@@ -30,6 +32,7 @@ export const provider = new GoogleAuthProvider()
 
 const db = getFirestore(app)
 
+// Create a new user in Firestore
 export async function createUser(userId) {
   console.log("Creating user with ID: ", userId)
   try {
@@ -45,8 +48,26 @@ export async function createUser(userId) {
     console.error("Error creating user: ", error)
   }
 }
-export async function createVault(userId, vault) {
-  return
+
+// Create a new vault for a user in Firestore
+export async function createVault(
+  userId,
+  { goalName, targetAmount, durationInWeeks },
+) {
+  try {
+    const userRef = doc(db, "users", userId)
+    await updateDoc(userRef, {
+      [goalName]: {
+        targetAmount,
+        durationInWeeks,
+      },
+    })
+
+    return "Vault created successfully"
+  } catch (error) {
+    console.error("Error creating vault: ", error)
+    return error
+  }
 }
 
 export { GoogleAuthProvider, signInWithCredential }
